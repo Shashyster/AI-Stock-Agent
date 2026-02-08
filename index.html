@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Stock Intelligence Platform</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+</head>
+<body>
+    <div class="container">
+        <!-- Header -->
+        <div class="header">
+            <h1>Stock Intelligence Platform</h1>
+            <p class="subtitle">Comprehensive stock analysis and investment insights</p>
+        </div>
+
+        <!-- Chat Messages Area -->
+        <div class="chat-container" id="chatContainer">
+            <div class="welcome-message">
+                <div class="message bot-message">
+                    <div class="message-content">
+                        <p style="margin-bottom: 12px; color: var(--text-primary); font-weight: 500;">Welcome to Stock Intelligence Platform</p>
+                        <p style="color: var(--text-secondary); margin-bottom: 16px;">Enter a ticker symbol to access comprehensive stock analysis, including technical indicators, fundamental metrics, DCF valuation, and AI-powered investment recommendations.</p>
+                        <div style="margin-top: 16px;">
+                            <div style="font-size: 12px; color: var(--text-muted); text-transform: uppercase; letter-spacing: 0.8px; margin-bottom: 10px; font-weight: 500;">Quick Search</div>
+                            <div class="example-tickers">
+                                <span class="ticker-tag" onclick="sendMessage('AAPL')">AAPL</span>
+                                <span class="ticker-tag" onclick="sendMessage('MSFT')">MSFT</span>
+                                <span class="ticker-tag" onclick="sendMessage('GOOGL')">GOOGL</span>
+                                <span class="ticker-tag" onclick="sendMessage('TSLA')">TSLA</span>
+                                <span class="ticker-tag" onclick="sendMessage('NVDA')">NVDA</span>
+                                <span class="ticker-tag" onclick="sendMessage('META')">META</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Input Area -->
+        <div class="input-container">
+            <div class="input-wrapper">
+                <textarea 
+                    id="messageInput" 
+                    placeholder="Type a ticker symbol (e.g., AAPL)..." 
+                    rows="1"
+                    onkeydown="handleKeyDown(event)"
+                ></textarea>
+                <button id="sendButton" onclick="sendUserMessage()">
+                    <svg width="20" height="20" viewBox="0 0 24 24" fill="none">
+                        <path d="M22 2L11 13" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+                        <path d="M22 2L15 22L11 13L2 9L22 2Z" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+                    </svg>
+                </button>
+            </div>
+        </div>
+    </div>
+
+    <script src="{{ url_for('static', filename='script.js') }}"></script>
+</body>
+</html>
+
+

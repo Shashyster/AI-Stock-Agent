@@ -1,0 +1,3067 @@
+{
+ "cells": [
+  {
+   "cell_type": "code",
+   "execution_count": null,
+   "id": "77bd9b6e",
+   "metadata": {},
+   "outputs": [],
+   "source": [
+    "print(134+53455)"
+   ]
+  },
+  {
+   "cell_type": "code",
+   "execution_count": null,
+   "id": "00f9d261",
+   "metadata": {},
+   "outputs": [
+    {
+     "name": "stdout",
+     "output_type": "stream",
+     "text": [
+      "hello world\n"
+     ]
+    }
+   ],
+   "source": [
+    "print(\"hello world\")"
+   ]
+  },
+  {
+   "cell_type": "code",
+   "execution_count": null,
+   "id": "f4568a57",
+   "metadata": {},
+   "outputs": [
+    {
+     "name": "stdout",
+     "output_type": "stream",
+     "text": [
+      "Shashwat\n",
+      "Ajay\n"
+     ]
+    }
+   ],
+   "source": [
+    "name=(\"Shashwat\")\n",
+    "Name=(\"Ajay\")\n",
+    "\n",
+    "print(name)\n",
+    "print(Name)"
+   ]
+  },
+  {
+   "cell_type": "code",
+   "execution_count": null,
+   "id": "8e84111f",
+   "metadata": {},
+   "outputs": [
+    {
+     "name": "stdout",
+     "output_type": "stream",
+     "text": [
+      "Banana Man\n",
+      "Lil' Mango\n"
+     ]
+    }
+   ],
+   "source": [
+    "name=(\"Banana Man\")\n",
+    "Name=(\"Lil' Mango\")\n",
+    "\n",
+    "print(name)\n",
+    "print(Name)"
+   ]
+  },
+  {
+   "cell_type": "code",
+   "execution_count": null,
+   "id": "01648225",
+   "metadata": {},
+   "outputs": [
+    {
+     "name": "stdout",
+     "output_type": "stream",
+     "text": [
+      "amigo\n",
+      "Superman\n"
+     ]
+    }
+   ],
+   "source": [
+    "name=(\"amigo\")\n",
+    "Name=(\"Superman\")\n",
+    "\n",
+    "print(name)\n",
+    "print(Name)"
+   ]
+  },
+  {
+   "cell_type": "code",
+   "execution_count": null,
+   "id": "af559ff9",
+   "metadata": {},
+   "outputs": [
+    {
+     "name": "stdout",
+     "output_type": "stream",
+     "text": [
+      "Mbappe\n",
+      "Kylian\n"
+     ]
+    }
+   ],
+   "source": [
+    "name=(\"Mbappe\")\n",
+    "Name=(\"Kylian\")\n",
+    "\n",
+    "print(name)\n",
+    "print(Name)"
+   ]
+  },
+  {
+   "cell_type": "code",
+   "execution_count": null,
+   "id": "3a38ea38",
+   "metadata": {},
+   "outputs": [
+    {
+     "name": "stdout",
+     "output_type": "stream",
+     "text": [
+      "32\n"
+     ]
+    }
+   ],
+   "source": [
+    "age=32\n",
+    "if age>30:\n",
+    "    print(age)"
+   ]
+  },
+  {
+   "cell_type": "code",
+   "execution_count": null,
+   "id": "be58d60f",
+   "metadata": {},
+   "outputs": [
+    {
+     "name": "stdout",
+     "output_type": "stream",
+     "text": [
+      "43\n"
+     ]
+    }
+   ],
+   "source": [
+    "total=1+2+3+4+5+6+7+\\\n",
+    "4+5+6\n",
+    "\n",
+    "print(total)"
+   ]
+  },
+  {
+   "cell_type": "code",
+   "execution_count": null,
+   "id": "43691527",
+   "metadata": {},
+   "outputs": [
+    {
+     "name": "stdout",
+     "output_type": "stream",
+     "text": [
+      "15\n"
+     ]
+    }
+   ],
+   "source": [
+    "x=5;y=10;z=x+y\n",
+    "print(z)\n"
+   ]
+  },
+  {
+   "cell_type": "code",
+   "execution_count": null,
+   "id": "bee9d3fb",
+   "metadata": {},
+   "outputs": [
+    {
+     "name": "stdout",
+     "output_type": "stream",
+     "text": [
+      "<class 'int'>\n",
+      "<class 'str'>\n"
+     ]
+    }
+   ],
+   "source": [
+    "variable=10\n",
+    "print(type(variable))\n",
+    "variable=\"Banana\"\n",
+    "print(type(variable))"
+   ]
+  },
+  {
+   "cell_type": "code",
+   "execution_count": null,
+   "id": "fcfc8311",
+   "metadata": {},
+   "outputs": [
+    {
+     "name": "stdout",
+     "output_type": "stream",
+     "text": [
+      "Correct Indentation\n",
+      "This will print\n",
+      "outside the if block\n"
+     ]
+    }
+   ],
+   "source": [
+    "if True:\n",
+    "    print(\"Correct Indentation\")\n",
+    "    if False:\n",
+    "        print(\"This wont print\")\n",
+    "    print(\"This will print\")\n",
+    "print(\"outside the if block\")\n"
+   ]
+  },
+  {
+   "cell_type": "code",
+   "execution_count": null,
+   "id": "3d286c02",
+   "metadata": {},
+   "outputs": [
+    {
+     "name": "stdout",
+     "output_type": "stream",
+     "text": [
+      "age:  16\n",
+      "height: 5.6\n",
+      "name: Shashwat\n"
+     ]
+    }
+   ],
+   "source": [
+    "age=16\n",
+    "height=5.6\n",
+    "name=\"Shashwat\"\n",
+    "is_student=True\n",
+    "\n",
+    "print(\"age: \", age)\n",
+    "print(\"height:\", height)\n",
+    "print(\"name:\", name)"
+   ]
+  },
+  {
+   "cell_type": "code",
+   "execution_count": null,
+   "id": "e20dab64",
+   "metadata": {},
+   "outputs": [
+    {
+     "name": "stdout",
+     "output_type": "stream",
+     "text": [
+      "Shashwat\n",
+      "Agrawal\n"
+     ]
+    }
+   ],
+   "source": [
+    "first_name=\"Shashwat\"\n",
+    "last_name=\"Agrawal\"\n",
+    "\n",
+    "print(first_name)\n",
+    "print(last_name)"
+   ]
+  },
+  {
+   "cell_type": "code",
+   "execution_count": null,
+   "id": "db348f8a",
+   "metadata": {},
+   "outputs": [
+    {
+     "data": {
+      "text/plain": [
+       "False"
+      ]
+     },
+     "execution_count": 3,
+     "metadata": {},
+     "output_type": "execute_result"
+    }
+   ],
+   "source": [
+    "name=\"Shashwat\"\n",
+    "Name=\"Agrawal\"\n",
+    "\n",
+    "name==Name"
+   ]
+  },
+  {
+   "cell_type": "code",
+   "execution_count": null,
+   "id": "4e670a65",
+   "metadata": {},
+   "outputs": [
+    {
+     "name": "stdout",
+     "output_type": "stream",
+     "text": [
+      "<class 'bool'>\n"
+     ]
+    }
+   ],
+   "source": [
+    "age=18\n",
+    "height=5.6\n",
+    "name=\"Shashwat\"\n",
+    "is_student=True\n",
+    "\n",
+    "print(type(is_student))"
+   ]
+  },
+  {
+   "cell_type": "code",
+   "execution_count": null,
+   "id": "7229234b",
+   "metadata": {},
+   "outputs": [
+    {
+     "data": {
+      "text/plain": [
+       "bool"
+      ]
+     },
+     "execution_count": 11,
+     "metadata": {},
+     "output_type": "execute_result"
+    }
+   ],
+   "source": [
+    "type(is_student)"
+   ]
+  },
+  {
+   "cell_type": "code",
+   "execution_count": null,
+   "id": "eafad9a8",
+   "metadata": {},
+   "outputs": [
+    {
+     "name": "stdout",
+     "output_type": "stream",
+     "text": [
+      "<class 'int'>\n",
+      "18\n",
+      "<class 'str'>\n"
+     ]
+    }
+   ],
+   "source": [
+    "print(type(age))\n",
+    "\n",
+    "age_str=str(age)\n",
+    "print(age_str)\n",
+    "print(type(age_str))"
+   ]
+  },
+  {
+   "cell_type": "code",
+   "execution_count": null,
+   "id": "9b5b4780",
+   "metadata": {},
+   "outputs": [
+    {
+     "data": {
+      "text/plain": [
+       "10"
+      ]
+     },
+     "execution_count": 12,
+     "metadata": {},
+     "output_type": "execute_result"
+    }
+   ],
+   "source": [
+    "name=\"10\"\n",
+    "int(name)"
+   ]
+  },
+  {
+   "cell_type": "code",
+   "execution_count": null,
+   "id": "4a6f7822",
+   "metadata": {},
+   "outputs": [
+    {
+     "data": {
+      "text/plain": [
+       "5.0"
+      ]
+     },
+     "execution_count": 21,
+     "metadata": {},
+     "output_type": "execute_result"
+    }
+   ],
+   "source": [
+    "height=5.6\n",
+    "type(height)\n",
+    "float(int(height))"
+   ]
+  },
+  {
+   "cell_type": "code",
+   "execution_count": null,
+   "id": "701b2057",
+   "metadata": {},
+   "outputs": [
+    {
+     "name": "stdout",
+     "output_type": "stream",
+     "text": [
+      "sum: 60.0\n",
+      "Difference: 40.0\n",
+      "Multiplication: 500.0\n",
+      "Division: 5.0\n"
+     ]
+    }
+   ],
+   "source": [
+    "num1 = int(input(\"Enter First Number: \"))\n",
+    "num2 = int(input(\"Enter Second Number: \"))\n",
+    "\n",
+    "sum1 = float(num1 + num2)\n",
+    "Difference = float(num1 - num2)\n",
+    "Multiplication = float(num1 * num2)\n",
+    "Division = float(num1 / num2)\n",
+    "\n",
+    "\n",
+    "print(\"sum:\" , sum1)\n",
+    "print(\"Difference:\" , Difference)\n",
+    "print(\"Multiplication:\", Multiplication)\n",
+    "print(\"Division:\", Division)\n"
+   ]
+  },
+  {
+   "cell_type": "code",
+   "execution_count": null,
+   "id": "8be89d48",
+   "metadata": {},
+   "outputs": [
+    {
+     "name": "stdout",
+     "output_type": "stream",
+     "text": [
+      "5.6\n",
+      "<class 'float'>\n"
+     ]
+    }
+   ],
+   "source": [
+    "height=5.6\n",
+    "print(height)\n",
+    "print(type(height))"
+   ]
+  },
+  {
+   "cell_type": "code",
+   "execution_count": null,
+   "id": "b160e831",
+   "metadata": {},
+   "outputs": [
+    {
+     "name": "stdout",
+     "output_type": "stream",
+     "text": [
+      "hello5\n"
+     ]
+    }
+   ],
+   "source": [
+    "result= \"hello\" + str(5)\n",
+    "print(result)"
+   ]
+  },
+  {
+   "cell_type": "code",
+   "execution_count": null,
+   "id": "af8a507c",
+   "metadata": {},
+   "outputs": [
+    {
+     "name": "stdout",
+     "output_type": "stream",
+     "text": [
+      "15\n",
+      "5\n",
+      "50\n",
+      "2.0\n",
+      "2\n",
+      "0\n",
+      "100000\n"
+     ]
+    }
+   ],
+   "source": [
+    "a=10\n",
+    "b=5\n",
+    "\n",
+    "add_result = (a+b)\n",
+    "sub_result = (a-b)\n",
+    "mult_result = (a*b)\n",
+    "div_result = (a/b)\n",
+    "floor_div_result = (a//b)\n",
+    "modulut_result = (a%b)\n",
+    "\n",
+    "eponent_result = (a**b)\n",
+    "\n",
+    "print(add_result)\n",
+    "print(sub_result)\n",
+    "print(mult_result)\n",
+    "print(div_result)\n",
+    "print(floor_div_result)\n",
+    "print(modulut_result)\n",
+    "print(eponent_result)"
+   ]
+  },
+  {
+   "cell_type": "code",
+   "execution_count": null,
+   "id": "751da2c7",
+   "metadata": {},
+   "outputs": [
+    {
+     "data": {
+      "text/plain": [
+       "12"
+      ]
+     },
+     "execution_count": 15,
+     "metadata": {},
+     "output_type": "execute_result"
+    }
+   ],
+   "source": [
+    "63//5"
+   ]
+  },
+  {
+   "cell_type": "code",
+   "execution_count": null,
+   "id": "23e9f369",
+   "metadata": {},
+   "outputs": [
+    {
+     "data": {
+      "text/plain": [
+       "True"
+      ]
+     },
+     "execution_count": 16,
+     "metadata": {},
+     "output_type": "execute_result"
+    }
+   ],
+   "source": [
+    "a=10\n",
+    "b=10\n",
+    "\n",
+    "a==b"
+   ]
+  },
+  {
+   "cell_type": "code",
+   "execution_count": null,
+   "id": "aceb8451",
+   "metadata": {},
+   "outputs": [
+    {
+     "data": {
+      "text/plain": [
+       "True"
+      ]
+     },
+     "execution_count": 24,
+     "metadata": {},
+     "output_type": "execute_result"
+    }
+   ],
+   "source": [
+    "str1=\"Shashwat\"\n",
+    "str2=\"Shashwat\"\n",
+    "\n",
+    "str1==str2\n",
+    "\n"
+   ]
+  },
+  {
+   "cell_type": "code",
+   "execution_count": null,
+   "id": "662cab95",
+   "metadata": {},
+   "outputs": [
+    {
+     "data": {
+      "text/plain": [
+       "True"
+      ]
+     },
+     "execution_count": 28,
+     "metadata": {},
+     "output_type": "execute_result"
+    }
+   ],
+   "source": [
+    "str3=\"Shashwat\"\n",
+    "str4=\"shashwat\"\n",
+    "\n",
+    "str3!=str4"
+   ]
+  },
+  {
+   "cell_type": "code",
+   "execution_count": null,
+   "id": "310f9e40",
+   "metadata": {},
+   "outputs": [
+    {
+     "name": "stdout",
+     "output_type": "stream",
+     "text": [
+      "True\n"
+     ]
+    }
+   ],
+   "source": [
+    "x= True\n",
+    "y= True\n",
+    "\n",
+    "result = x and y\n",
+    "print(result)"
+   ]
+  },
+  {
+   "cell_type": "code",
+   "execution_count": null,
+   "id": "733c01f3",
+   "metadata": {},
+   "outputs": [
+    {
+     "name": "stdout",
+     "output_type": "stream",
+     "text": [
+      "True\n"
+     ]
+    }
+   ],
+   "source": [
+    "x= True\n",
+    "y= False\n",
+    "\n",
+    "result = x or y\n",
+    "print(result)"
+   ]
+  },
+  {
+   "cell_type": "code",
+   "execution_count": null,
+   "id": "a78967c3",
+   "metadata": {},
+   "outputs": [
+    {
+     "data": {
+      "text/plain": [
+       "False"
+      ]
+     },
+     "execution_count": 34,
+     "metadata": {},
+     "output_type": "execute_result"
+    }
+   ],
+   "source": [
+    "# Not operator (Basically the opposite)\n",
+    "X=True\n",
+    "not X"
+   ]
+  },
+  {
+   "cell_type": "code",
+   "execution_count": null,
+   "id": "5f4b37ff",
+   "metadata": {},
+   "outputs": [
+    {
+     "name": "stdout",
+     "output_type": "stream",
+     "text": [
+      "number 1: 11.0\n",
+      "number 2: 5.0\n",
+      "sum: 16.0\n",
+      "Difference: 6.0\n",
+      "Multiplication: 55.0\n",
+      "Division: 2.2\n",
+      "floor: 2.0\n",
+      "modulus: 1.0\n",
+      "exponent: 161051.0\n"
+     ]
+    }
+   ],
+   "source": [
+    "num1=float(input(\"Enter First Number: \"))\n",
+    "num2=float(input(\"Enter Second Number: \"))\n",
+    "\n",
+    "sum1=float(num1+num2)\n",
+    "Difference=float(num1-num2)\n",
+    "Multiplication=float(num1*num2)\n",
+    "Division=float(num1/num2)\n",
+    "floor=float(num1//num2)\n",
+    "modulus=float(num1%num2)\n",
+    "Exponent=float(num1**num2)\n",
+    "\n",
+    "\n",
+    "print(\"number 1:\", num1)\n",
+    "print(\"number 2:\", num2)\n",
+    "print(\"sum:\",sum1)\n",
+    "print(\"Difference:\",Difference)\n",
+    "print(\"Multiplication:\",Multiplication)\n",
+    "print(\"Division:\",Division)\n",
+    "print(\"floor:\", floor)\n",
+    "print(\"modulus:\", modulus)\n",
+    "print(\"exponent:\",Exponent)\n",
+    "\n"
+   ]
+  },
+  {
+   "cell_type": "code",
+   "execution_count": null,
+   "id": "a0a433b0",
+   "metadata": {},
+   "outputs": [
+    {
+     "name": "stdout",
+     "output_type": "stream",
+     "text": [
+      "Shambhavi Argagarga\n",
+      "You are allowed to vote\n",
+      "You are going to jail\n"
+     ]
+    }
+   ],
+   "source": [
+    "Name= str(input(\"What's your full name\"))\n",
+    "\n",
+    "print(Name)\n",
+    "\n",
+    "age= int(input(\"What's your age\"))\n",
+    "\n",
+    "if age>=18:\n",
+    "    print(\"You are allowed to vote\")   \n",
+    "else:\n",
+    "    print(\"You are a minor\")\n",
+    "\n",
+    "Birthday= int(input(\"What's your birth year\"))\n",
+    "\n",
+    "if Birthday<=2007:\n",
+    "    print(\"Welcome Operator\")\n",
+    "else:\n",
+    "    print(\"You are going to jail\")\n",
+    "\n",
+    "    \n"
+   ]
+  },
+  {
+   "cell_type": "code",
+   "execution_count": null,
+   "id": "03c86802",
+   "metadata": {},
+   "outputs": [
+    {
+     "name": "stdout",
+     "output_type": "stream",
+     "text": [
+      "You are a teenager\n"
+     ]
+    }
+   ],
+   "source": [
+    "# elif statement \n",
+    "age=int(input(\"What's your age\"))\n",
+    "if age<13:\n",
+    "    print(\"You are a child\")\n",
+    "elif age<18: \n",
+    "    print(\"You are a teenager\")\n",
+    "else:\n",
+    "    print(\"You are an adult\")"
+   ]
+  },
+  {
+   "cell_type": "code",
+   "execution_count": null,
+   "id": "4b0208aa",
+   "metadata": {},
+   "outputs": [
+    {
+     "name": "stdout",
+     "output_type": "stream",
+     "text": [
+      "The number is positive\n",
+      "The number is odd\n"
+     ]
+    }
+   ],
+   "source": [
+    "# Nested Conditional Statements\n",
+    "\n",
+    "num=int(input(\"Enter the number\"))\n",
+    "\n",
+    "if num>0:\n",
+    "    print(\"The number is positive\")\n",
+    "    if num%2==0:\n",
+    "        print(\"The number is even\")\n",
+    "    else:\n",
+    "        print(\"The number is odd\")\n",
+    "else:\n",
+    "    print(\"The number is zero or negative\")\n",
+    "\n"
+   ]
+  },
+  {
+   "cell_type": "code",
+   "execution_count": null,
+   "id": "75f05710",
+   "metadata": {},
+   "outputs": [
+    {
+     "name": "stdout",
+     "output_type": "stream",
+     "text": [
+      "2020 is a leap year\n"
+     ]
+    }
+   ],
+   "source": [
+    "year=int(input(\"Enter the year\"))\n",
+    "\n",
+    "if year%4==0:\n",
+    "    print(year,\"is a leap year\")\n",
+    "else:\n",
+    "    print(year,\"is not a leap year\")"
+   ]
+  },
+  {
+   "cell_type": "code",
+   "execution_count": null,
+   "id": "99e1eef4",
+   "metadata": {},
+   "outputs": [
+    {
+     "name": "stdout",
+     "output_type": "stream",
+     "text": [
+      "Result: 0.6764705882352942\n"
+     ]
+    }
+   ],
+   "source": [
+    "## Calculator program using if, elif, and else\n",
+    "\n",
+    "num1=float(input(\"Enter First Number: \"))\n",
+    "num2=float(input(\"Enter Second Number: \"))\n",
+    "\n",
+    "operation = (input(\"Enter the operation +, -, *, /\"))\n",
+    "\n",
+    "if operation == \"+\":\n",
+    "    result = num1 + num2\n",
+    "elif operation == \"-\":\n",
+    "    result == num1 - num2\n",
+    "elif operation == \"*\":\n",
+    "    result = num1*num2\n",
+    "elif operation == \"/\":\n",
+    "    if num2 != 0:\n",
+    "        result = num1/num2\n",
+    "    else:\n",
+    "        result = \"ERROR! DIVISION BY 0 NOT POSSIBLE\"\n",
+    "\n",
+    "else:\n",
+    "    result = \"Invalid Operation\"\n",
+    "\n",
+    "print(\"Result:\", result)\n",
+    "\n",
+    "\n"
+   ]
+  },
+  {
+   "cell_type": "code",
+   "execution_count": null,
+   "id": "601dc05c",
+   "metadata": {},
+   "outputs": [
+    {
+     "name": "stdout",
+     "output_type": "stream",
+     "text": [
+      "Your ticket price will be $15\n"
+     ]
+    }
+   ],
+   "source": [
+    "age=int(input(\"Enter your age\"))\n",
+    "\n",
+    "if age>=18:\n",
+    "    print(\"Your ticket price will be $20\")\n",
+    "elif age>=12:\n",
+    "    print(\"Your ticket price will be $15\")\n",
+    "elif age<12:\n",
+    "    print(\"Your ticket price will be $10\")\n"
+   ]
+  },
+  {
+   "cell_type": "code",
+   "execution_count": null,
+   "id": "6ad79c0a",
+   "metadata": {},
+   "outputs": [
+    {
+     "data": {
+      "text/plain": [
+       "range(0, 5)"
+      ]
+     },
+     "execution_count": 7,
+     "metadata": {},
+     "output_type": "execute_result"
+    }
+   ],
+   "source": [
+    "## for loop\n",
+    "## (Loop to iterate over a sequence of numbers)\n",
+    "\n",
+    "range(5)\n",
+    "\n"
+   ]
+  },
+  {
+   "cell_type": "code",
+   "execution_count": null,
+   "id": "e0e500f0",
+   "metadata": {},
+   "outputs": [
+    {
+     "name": "stdout",
+     "output_type": "stream",
+     "text": [
+      "0\n",
+      "1\n",
+      "2\n",
+      "3\n",
+      "4\n",
+      "5\n",
+      "6\n"
+     ]
+    }
+   ],
+   "source": [
+    "for i in range(7):\n",
+    "    print(i)"
+   ]
+  },
+  {
+   "cell_type": "code",
+   "execution_count": null,
+   "id": "91bb62dc",
+   "metadata": {},
+   "outputs": [
+    {
+     "name": "stdout",
+     "output_type": "stream",
+     "text": [
+      "1\n",
+      "3\n",
+      "5\n",
+      "7\n",
+      "9\n"
+     ]
+    }
+   ],
+   "source": [
+    "for i in range(1,10,2):\n",
+    "    print(i)"
+   ]
+  },
+  {
+   "cell_type": "code",
+   "execution_count": null,
+   "id": "c82d4e10",
+   "metadata": {},
+   "outputs": [
+    {
+     "name": "stdout",
+     "output_type": "stream",
+     "text": [
+      "10\n",
+      "8\n",
+      "6\n",
+      "4\n",
+      "2\n"
+     ]
+    }
+   ],
+   "source": [
+    "for i in range(10,1,-2):\n",
+    "    print(i)"
+   ]
+  },
+  {
+   "cell_type": "code",
+   "execution_count": null,
+   "id": "0aac1548",
+   "metadata": {},
+   "outputs": [
+    {
+     "name": "stdout",
+     "output_type": "stream",
+     "text": [
+      "S\n",
+      "h\n",
+      "a\n",
+      "s\n",
+      "h\n",
+      "w\n",
+      "a\n",
+      "t\n",
+      " \n",
+      "A\n",
+      "g\n",
+      "r\n",
+      "a\n",
+      "w\n",
+      "a\n",
+      "l\n"
+     ]
+    }
+   ],
+   "source": [
+    "str=\"Shashwat Agrawal\"\n",
+    "for i in str:\n",
+    "    print(i)"
+   ]
+  },
+  {
+   "cell_type": "code",
+   "execution_count": null,
+   "id": "e0ec1d0c",
+   "metadata": {},
+   "outputs": [
+    {
+     "name": "stdout",
+     "output_type": "stream",
+     "text": [
+      "0\n",
+      "1\n",
+      "2\n",
+      "3\n",
+      "4\n"
+     ]
+    }
+   ],
+   "source": [
+    "## while loop\n",
+    "\n",
+    "count=0 \n",
+    "\n",
+    "while count<5:\n",
+    "    print(count)\n",
+    "    count=count+1"
+   ]
+  },
+  {
+   "cell_type": "code",
+   "execution_count": 5,
+   "id": "71dfed71",
+   "metadata": {},
+   "outputs": [
+    {
+     "name": "stdout",
+     "output_type": "stream",
+     "text": [
+      "0\n"
+     ]
+    }
+   ],
+   "source": [
+    "count=0\n",
+    "\n",
+    "while count%2==0:\n",
+    "    print(count)\n",
+    "    count=count+1"
+   ]
+  },
+  {
+   "cell_type": "code",
+   "execution_count": 17,
+   "id": "f9fdc79c",
+   "metadata": {},
+   "outputs": [
+    {
+     "name": "stdout",
+     "output_type": "stream",
+     "text": [
+      "0\n",
+      "1\n",
+      "2\n",
+      "3\n",
+      "4\n"
+     ]
+    }
+   ],
+   "source": [
+    "## loop control statements\n",
+    "\n",
+    "#break\n",
+    "#the break statement exits the loop prematurely\n",
+    "\n",
+    "##break statement\n",
+    "\n",
+    "for i in range(10):\n",
+    "    if i==5:\n",
+    "        break \n",
+    "    print(i)"
+   ]
+  },
+  {
+   "cell_type": "code",
+   "execution_count": 15,
+   "id": "0e7d42e5",
+   "metadata": {},
+   "outputs": [
+    {
+     "name": "stdout",
+     "output_type": "stream",
+     "text": [
+      "1\n",
+      "3\n",
+      "5\n",
+      "7\n",
+      "9\n"
+     ]
+    }
+   ],
+   "source": [
+    "##continue\n",
+    "\n",
+    "# the continue statement skips the current iteration and continues with the next.\n",
+    "\n",
+    "for i in range(10):\n",
+    "    if i%2 != 0:\n",
+    "        print(i)"
+   ]
+  },
+  {
+   "cell_type": "code",
+   "execution_count": 19,
+   "id": "ca3a339b",
+   "metadata": {},
+   "outputs": [
+    {
+     "name": "stdout",
+     "output_type": "stream",
+     "text": [
+      "0\n",
+      "1\n",
+      "2\n",
+      "The number is 3\n",
+      "3\n",
+      "4\n"
+     ]
+    }
+   ],
+   "source": [
+    "## pass\n",
+    "## The pass statement is a null operation; it does nothing.\n",
+    "\n",
+    "for i in range(5):\n",
+    "    if i==3:\n",
+    "        print(\"The number is\", i)\n",
+    "        pass\n",
+    "    print(i)"
+   ]
+  },
+  {
+   "cell_type": "code",
+   "execution_count": 20,
+   "id": "3f968bbe",
+   "metadata": {},
+   "outputs": [
+    {
+     "name": "stdout",
+     "output_type": "stream",
+     "text": [
+      "i:0 and j:0\n",
+      "i:0 and j:1\n",
+      "i:1 and j:0\n",
+      "i:1 and j:1\n",
+      "i:2 and j:0\n",
+      "i:2 and j:1\n"
+     ]
+    }
+   ],
+   "source": [
+    "## nested loops\n",
+    "## loop inside a loop\n",
+    "\n",
+    "for i in range(3):\n",
+    "    for j in range(2):\n",
+    "        print(f\"i:{i} and j:{j}\")"
+   ]
+  },
+  {
+   "cell_type": "code",
+   "execution_count": 22,
+   "id": "b087cf17",
+   "metadata": {},
+   "outputs": [
+    {
+     "name": "stdout",
+     "output_type": "stream",
+     "text": [
+      "sum of first 10 natural numbers: 55\n"
+     ]
+    }
+   ],
+   "source": [
+    "## Examples - calculate the sum of first N natural numbers using a While and For loop.\n",
+    "\n",
+    "## While loop\n",
+    "\n",
+    "n=10\n",
+    "sum=0\n",
+    "count=1\n",
+    "\n",
+    "while count <= n:\n",
+    "    sum = sum + count\n",
+    "    count = count + 1\n",
+    "\n",
+    "print(\"sum of first 10 natural numbers:\",sum)"
+   ]
+  },
+  {
+   "cell_type": "code",
+   "execution_count": 23,
+   "id": "1a3980b2",
+   "metadata": {},
+   "outputs": [
+    {
+     "name": "stdout",
+     "output_type": "stream",
+     "text": [
+      "55\n"
+     ]
+    }
+   ],
+   "source": [
+    "# for loop\n",
+    "\n",
+    "n=10\n",
+    "sum=0\n",
+    "\n",
+    "for i in range(11):\n",
+    "    sum = sum + i\n",
+    "\n",
+    "print(sum)"
+   ]
+  },
+  {
+   "cell_type": "code",
+   "execution_count": 24,
+   "id": "05daffdf",
+   "metadata": {},
+   "outputs": [
+    {
+     "name": "stdout",
+     "output_type": "stream",
+     "text": [
+      "3\n",
+      "5\n",
+      "5\n",
+      "5\n",
+      "7\n",
+      "7\n",
+      "7\n",
+      "7\n",
+      "7\n",
+      "9\n",
+      "11\n",
+      "11\n",
+      "11\n",
+      "11\n",
+      "11\n",
+      "11\n",
+      "11\n",
+      "11\n",
+      "11\n",
+      "13\n",
+      "13\n",
+      "13\n",
+      "13\n",
+      "13\n",
+      "13\n",
+      "13\n",
+      "13\n",
+      "13\n",
+      "13\n",
+      "13\n",
+      "15\n",
+      "17\n",
+      "17\n",
+      "17\n",
+      "17\n",
+      "17\n",
+      "17\n",
+      "17\n",
+      "17\n",
+      "17\n",
+      "17\n",
+      "17\n",
+      "17\n",
+      "17\n",
+      "17\n",
+      "17\n",
+      "19\n",
+      "19\n",
+      "19\n",
+      "19\n",
+      "19\n",
+      "19\n",
+      "19\n",
+      "19\n",
+      "19\n",
+      "19\n",
+      "19\n",
+      "19\n",
+      "19\n",
+      "19\n",
+      "19\n",
+      "19\n",
+      "19\n",
+      "21\n",
+      "23\n",
+      "23\n",
+      "23\n",
+      "23\n",
+      "23\n",
+      "23\n",
+      "23\n",
+      "23\n",
+      "23\n",
+      "23\n",
+      "23\n",
+      "23\n",
+      "23\n",
+      "23\n",
+      "23\n",
+      "23\n",
+      "23\n",
+      "23\n",
+      "23\n",
+      "23\n",
+      "23\n",
+      "25\n",
+      "25\n",
+      "25\n",
+      "27\n",
+      "29\n",
+      "29\n",
+      "29\n",
+      "29\n",
+      "29\n",
+      "29\n",
+      "29\n",
+      "29\n",
+      "29\n",
+      "29\n",
+      "29\n",
+      "29\n",
+      "29\n",
+      "29\n",
+      "29\n",
+      "29\n",
+      "29\n",
+      "29\n",
+      "29\n",
+      "29\n",
+      "29\n",
+      "29\n",
+      "29\n",
+      "29\n",
+      "29\n",
+      "29\n",
+      "29\n",
+      "31\n",
+      "31\n",
+      "31\n",
+      "31\n",
+      "31\n",
+      "31\n",
+      "31\n",
+      "31\n",
+      "31\n",
+      "31\n",
+      "31\n",
+      "31\n",
+      "31\n",
+      "31\n",
+      "31\n",
+      "31\n",
+      "31\n",
+      "31\n",
+      "31\n",
+      "31\n",
+      "31\n",
+      "31\n",
+      "31\n",
+      "31\n",
+      "31\n",
+      "31\n",
+      "31\n",
+      "31\n",
+      "31\n",
+      "33\n",
+      "35\n",
+      "35\n",
+      "35\n",
+      "37\n",
+      "37\n",
+      "37\n",
+      "37\n",
+      "37\n",
+      "37\n",
+      "37\n",
+      "37\n",
+      "37\n",
+      "37\n",
+      "37\n",
+      "37\n",
+      "37\n",
+      "37\n",
+      "37\n",
+      "37\n",
+      "37\n",
+      "37\n",
+      "37\n",
+      "37\n",
+      "37\n",
+      "37\n",
+      "37\n",
+      "37\n",
+      "37\n",
+      "37\n",
+      "37\n",
+      "37\n",
+      "37\n",
+      "37\n",
+      "37\n",
+      "37\n",
+      "37\n",
+      "37\n",
+      "37\n",
+      "39\n",
+      "41\n",
+      "41\n",
+      "41\n",
+      "41\n",
+      "41\n",
+      "41\n",
+      "41\n",
+      "41\n",
+      "41\n",
+      "41\n",
+      "41\n",
+      "41\n",
+      "41\n",
+      "41\n",
+      "41\n",
+      "41\n",
+      "41\n",
+      "41\n",
+      "41\n",
+      "41\n",
+      "41\n",
+      "41\n",
+      "41\n",
+      "41\n",
+      "41\n",
+      "41\n",
+      "41\n",
+      "41\n",
+      "41\n",
+      "41\n",
+      "41\n",
+      "41\n",
+      "41\n",
+      "41\n",
+      "41\n",
+      "41\n",
+      "41\n",
+      "41\n",
+      "41\n",
+      "43\n",
+      "43\n",
+      "43\n",
+      "43\n",
+      "43\n",
+      "43\n",
+      "43\n",
+      "43\n",
+      "43\n",
+      "43\n",
+      "43\n",
+      "43\n",
+      "43\n",
+      "43\n",
+      "43\n",
+      "43\n",
+      "43\n",
+      "43\n",
+      "43\n",
+      "43\n",
+      "43\n",
+      "43\n",
+      "43\n",
+      "43\n",
+      "43\n",
+      "43\n",
+      "43\n",
+      "43\n",
+      "43\n",
+      "43\n",
+      "43\n",
+      "43\n",
+      "43\n",
+      "43\n",
+      "43\n",
+      "43\n",
+      "43\n",
+      "43\n",
+      "43\n",
+      "43\n",
+      "43\n",
+      "45\n",
+      "47\n",
+      "47\n",
+      "47\n",
+      "47\n",
+      "47\n",
+      "47\n",
+      "47\n",
+      "47\n",
+      "47\n",
+      "47\n",
+      "47\n",
+      "47\n",
+      "47\n",
+      "47\n",
+      "47\n",
+      "47\n",
+      "47\n",
+      "47\n",
+      "47\n",
+      "47\n",
+      "47\n",
+      "47\n",
+      "47\n",
+      "47\n",
+      "47\n",
+      "47\n",
+      "47\n",
+      "47\n",
+      "47\n",
+      "47\n",
+      "47\n",
+      "47\n",
+      "47\n",
+      "47\n",
+      "47\n",
+      "47\n",
+      "47\n",
+      "47\n",
+      "47\n",
+      "47\n",
+      "47\n",
+      "47\n",
+      "47\n",
+      "47\n",
+      "47\n",
+      "49\n",
+      "49\n",
+      "49\n",
+      "49\n",
+      "49\n",
+      "51\n",
+      "53\n",
+      "53\n",
+      "53\n",
+      "53\n",
+      "53\n",
+      "53\n",
+      "53\n",
+      "53\n",
+      "53\n",
+      "53\n",
+      "53\n",
+      "53\n",
+      "53\n",
+      "53\n",
+      "53\n",
+      "53\n",
+      "53\n",
+      "53\n",
+      "53\n",
+      "53\n",
+      "53\n",
+      "53\n",
+      "53\n",
+      "53\n",
+      "53\n",
+      "53\n",
+      "53\n",
+      "53\n",
+      "53\n",
+      "53\n",
+      "53\n",
+      "53\n",
+      "53\n",
+      "53\n",
+      "53\n",
+      "53\n",
+      "53\n",
+      "53\n",
+      "53\n",
+      "53\n",
+      "53\n",
+      "53\n",
+      "53\n",
+      "53\n",
+      "53\n",
+      "53\n",
+      "53\n",
+      "53\n",
+      "53\n",
+      "53\n",
+      "53\n",
+      "55\n",
+      "55\n",
+      "55\n",
+      "57\n",
+      "59\n",
+      "59\n",
+      "59\n",
+      "59\n",
+      "59\n",
+      "59\n",
+      "59\n",
+      "59\n",
+      "59\n",
+      "59\n",
+      "59\n",
+      "59\n",
+      "59\n",
+      "59\n",
+      "59\n",
+      "59\n",
+      "59\n",
+      "59\n",
+      "59\n",
+      "59\n",
+      "59\n",
+      "59\n",
+      "59\n",
+      "59\n",
+      "59\n",
+      "59\n",
+      "59\n",
+      "59\n",
+      "59\n",
+      "59\n",
+      "59\n",
+      "59\n",
+      "59\n",
+      "59\n",
+      "59\n",
+      "59\n",
+      "59\n",
+      "59\n",
+      "59\n",
+      "59\n",
+      "59\n",
+      "59\n",
+      "59\n",
+      "59\n",
+      "59\n",
+      "59\n",
+      "59\n",
+      "59\n",
+      "59\n",
+      "59\n",
+      "59\n",
+      "59\n",
+      "59\n",
+      "59\n",
+      "59\n",
+      "59\n",
+      "59\n",
+      "61\n",
+      "61\n",
+      "61\n",
+      "61\n",
+      "61\n",
+      "61\n",
+      "61\n",
+      "61\n",
+      "61\n",
+      "61\n",
+      "61\n",
+      "61\n",
+      "61\n",
+      "61\n",
+      "61\n",
+      "61\n",
+      "61\n",
+      "61\n",
+      "61\n",
+      "61\n",
+      "61\n",
+      "61\n",
+      "61\n",
+      "61\n",
+      "61\n",
+      "61\n",
+      "61\n",
+      "61\n",
+      "61\n",
+      "61\n",
+      "61\n",
+      "61\n",
+      "61\n",
+      "61\n",
+      "61\n",
+      "61\n",
+      "61\n",
+      "61\n",
+      "61\n",
+      "61\n",
+      "61\n",
+      "61\n",
+      "61\n",
+      "61\n",
+      "61\n",
+      "61\n",
+      "61\n",
+      "61\n",
+      "61\n",
+      "61\n",
+      "61\n",
+      "61\n",
+      "61\n",
+      "61\n",
+      "61\n",
+      "61\n",
+      "61\n",
+      "61\n",
+      "61\n",
+      "63\n",
+      "65\n",
+      "65\n",
+      "65\n",
+      "67\n",
+      "67\n",
+      "67\n",
+      "67\n",
+      "67\n",
+      "67\n",
+      "67\n",
+      "67\n",
+      "67\n",
+      "67\n",
+      "67\n",
+      "67\n",
+      "67\n",
+      "67\n",
+      "67\n",
+      "67\n",
+      "67\n",
+      "67\n",
+      "67\n",
+      "67\n",
+      "67\n",
+      "67\n",
+      "67\n",
+      "67\n",
+      "67\n",
+      "67\n",
+      "67\n",
+      "67\n",
+      "67\n",
+      "67\n",
+      "67\n",
+      "67\n",
+      "67\n",
+      "67\n",
+      "67\n",
+      "67\n",
+      "67\n",
+      "67\n",
+      "67\n",
+      "67\n",
+      "67\n",
+      "67\n",
+      "67\n",
+      "67\n",
+      "67\n",
+      "67\n",
+      "67\n",
+      "67\n",
+      "67\n",
+      "67\n",
+      "67\n",
+      "67\n",
+      "67\n",
+      "67\n",
+      "67\n",
+      "67\n",
+      "67\n",
+      "67\n",
+      "67\n",
+      "67\n",
+      "67\n",
+      "67\n",
+      "67\n",
+      "67\n",
+      "67\n",
+      "69\n",
+      "71\n",
+      "71\n",
+      "71\n",
+      "71\n",
+      "71\n",
+      "71\n",
+      "71\n",
+      "71\n",
+      "71\n",
+      "71\n",
+      "71\n",
+      "71\n",
+      "71\n",
+      "71\n",
+      "71\n",
+      "71\n",
+      "71\n",
+      "71\n",
+      "71\n",
+      "71\n",
+      "71\n",
+      "71\n",
+      "71\n",
+      "71\n",
+      "71\n",
+      "71\n",
+      "71\n",
+      "71\n",
+      "71\n",
+      "71\n",
+      "71\n",
+      "71\n",
+      "71\n",
+      "71\n",
+      "71\n",
+      "71\n",
+      "71\n",
+      "71\n",
+      "71\n",
+      "71\n",
+      "71\n",
+      "71\n",
+      "71\n",
+      "71\n",
+      "71\n",
+      "71\n",
+      "71\n",
+      "71\n",
+      "71\n",
+      "71\n",
+      "71\n",
+      "71\n",
+      "71\n",
+      "71\n",
+      "71\n",
+      "71\n",
+      "71\n",
+      "71\n",
+      "71\n",
+      "71\n",
+      "71\n",
+      "71\n",
+      "71\n",
+      "71\n",
+      "71\n",
+      "71\n",
+      "71\n",
+      "71\n",
+      "71\n",
+      "73\n",
+      "73\n",
+      "73\n",
+      "73\n",
+      "73\n",
+      "73\n",
+      "73\n",
+      "73\n",
+      "73\n",
+      "73\n",
+      "73\n",
+      "73\n",
+      "73\n",
+      "73\n",
+      "73\n",
+      "73\n",
+      "73\n",
+      "73\n",
+      "73\n",
+      "73\n",
+      "73\n",
+      "73\n",
+      "73\n",
+      "73\n",
+      "73\n",
+      "73\n",
+      "73\n",
+      "73\n",
+      "73\n",
+      "73\n",
+      "73\n",
+      "73\n",
+      "73\n",
+      "73\n",
+      "73\n",
+      "73\n",
+      "73\n",
+      "73\n",
+      "73\n",
+      "73\n",
+      "73\n",
+      "73\n",
+      "73\n",
+      "73\n",
+      "73\n",
+      "73\n",
+      "73\n",
+      "73\n",
+      "73\n",
+      "73\n",
+      "73\n",
+      "73\n",
+      "73\n",
+      "73\n",
+      "73\n",
+      "73\n",
+      "73\n",
+      "73\n",
+      "73\n",
+      "73\n",
+      "73\n",
+      "73\n",
+      "73\n",
+      "73\n",
+      "73\n",
+      "73\n",
+      "73\n",
+      "73\n",
+      "73\n",
+      "73\n",
+      "73\n",
+      "75\n",
+      "77\n",
+      "77\n",
+      "77\n",
+      "77\n",
+      "77\n",
+      "79\n",
+      "79\n",
+      "79\n",
+      "79\n",
+      "79\n",
+      "79\n",
+      "79\n",
+      "79\n",
+      "79\n",
+      "79\n",
+      "79\n",
+      "79\n",
+      "79\n",
+      "79\n",
+      "79\n",
+      "79\n",
+      "79\n",
+      "79\n",
+      "79\n",
+      "79\n",
+      "79\n",
+      "79\n",
+      "79\n",
+      "79\n",
+      "79\n",
+      "79\n",
+      "79\n",
+      "79\n",
+      "79\n",
+      "79\n",
+      "79\n",
+      "79\n",
+      "79\n",
+      "79\n",
+      "79\n",
+      "79\n",
+      "79\n",
+      "79\n",
+      "79\n",
+      "79\n",
+      "79\n",
+      "79\n",
+      "79\n",
+      "79\n",
+      "79\n",
+      "79\n",
+      "79\n",
+      "79\n",
+      "79\n",
+      "79\n",
+      "79\n",
+      "79\n",
+      "79\n",
+      "79\n",
+      "79\n",
+      "79\n",
+      "79\n",
+      "79\n",
+      "79\n",
+      "79\n",
+      "79\n",
+      "79\n",
+      "79\n",
+      "79\n",
+      "79\n",
+      "79\n",
+      "79\n",
+      "79\n",
+      "79\n",
+      "79\n",
+      "79\n",
+      "79\n",
+      "79\n",
+      "79\n",
+      "79\n",
+      "79\n",
+      "79\n",
+      "81\n",
+      "83\n",
+      "83\n",
+      "83\n",
+      "83\n",
+      "83\n",
+      "83\n",
+      "83\n",
+      "83\n",
+      "83\n",
+      "83\n",
+      "83\n",
+      "83\n",
+      "83\n",
+      "83\n",
+      "83\n",
+      "83\n",
+      "83\n",
+      "83\n",
+      "83\n",
+      "83\n",
+      "83\n",
+      "83\n",
+      "83\n",
+      "83\n",
+      "83\n",
+      "83\n",
+      "83\n",
+      "83\n",
+      "83\n",
+      "83\n",
+      "83\n",
+      "83\n",
+      "83\n",
+      "83\n",
+      "83\n",
+      "83\n",
+      "83\n",
+      "83\n",
+      "83\n",
+      "83\n",
+      "83\n",
+      "83\n",
+      "83\n",
+      "83\n",
+      "83\n",
+      "83\n",
+      "83\n",
+      "83\n",
+      "83\n",
+      "83\n",
+      "83\n",
+      "83\n",
+      "83\n",
+      "83\n",
+      "83\n",
+      "83\n",
+      "83\n",
+      "83\n",
+      "83\n",
+      "83\n",
+      "83\n",
+      "83\n",
+      "83\n",
+      "83\n",
+      "83\n",
+      "83\n",
+      "83\n",
+      "83\n",
+      "83\n",
+      "83\n",
+      "83\n",
+      "83\n",
+      "83\n",
+      "83\n",
+      "83\n",
+      "83\n",
+      "83\n",
+      "83\n",
+      "83\n",
+      "83\n",
+      "83\n",
+      "85\n",
+      "85\n",
+      "85\n",
+      "87\n",
+      "89\n",
+      "89\n",
+      "89\n",
+      "89\n",
+      "89\n",
+      "89\n",
+      "89\n",
+      "89\n",
+      "89\n",
+      "89\n",
+      "89\n",
+      "89\n",
+      "89\n",
+      "89\n",
+      "89\n",
+      "89\n",
+      "89\n",
+      "89\n",
+      "89\n",
+      "89\n",
+      "89\n",
+      "89\n",
+      "89\n",
+      "89\n",
+      "89\n",
+      "89\n",
+      "89\n",
+      "89\n",
+      "89\n",
+      "89\n",
+      "89\n",
+      "89\n",
+      "89\n",
+      "89\n",
+      "89\n",
+      "89\n",
+      "89\n",
+      "89\n",
+      "89\n",
+      "89\n",
+      "89\n",
+      "89\n",
+      "89\n",
+      "89\n",
+      "89\n",
+      "89\n",
+      "89\n",
+      "89\n",
+      "89\n",
+      "89\n",
+      "89\n",
+      "89\n",
+      "89\n",
+      "89\n",
+      "89\n",
+      "89\n",
+      "89\n",
+      "89\n",
+      "89\n",
+      "89\n",
+      "89\n",
+      "89\n",
+      "89\n",
+      "89\n",
+      "89\n",
+      "89\n",
+      "89\n",
+      "89\n",
+      "89\n",
+      "89\n",
+      "89\n",
+      "89\n",
+      "89\n",
+      "89\n",
+      "89\n",
+      "89\n",
+      "89\n",
+      "89\n",
+      "89\n",
+      "89\n",
+      "89\n",
+      "89\n",
+      "89\n",
+      "89\n",
+      "89\n",
+      "89\n",
+      "89\n",
+      "91\n",
+      "91\n",
+      "91\n",
+      "91\n",
+      "91\n",
+      "93\n",
+      "95\n",
+      "95\n",
+      "95\n",
+      "97\n",
+      "97\n",
+      "97\n",
+      "97\n",
+      "97\n",
+      "97\n",
+      "97\n",
+      "97\n",
+      "97\n",
+      "97\n",
+      "97\n",
+      "97\n",
+      "97\n",
+      "97\n",
+      "97\n",
+      "97\n",
+      "97\n",
+      "97\n",
+      "97\n",
+      "97\n",
+      "97\n",
+      "97\n",
+      "97\n",
+      "97\n",
+      "97\n",
+      "97\n",
+      "97\n",
+      "97\n",
+      "97\n",
+      "97\n",
+      "97\n",
+      "97\n",
+      "97\n",
+      "97\n",
+      "97\n",
+      "97\n",
+      "97\n",
+      "97\n",
+      "97\n",
+      "97\n",
+      "97\n",
+      "97\n",
+      "97\n",
+      "97\n",
+      "97\n",
+      "97\n",
+      "97\n",
+      "97\n",
+      "97\n",
+      "97\n",
+      "97\n",
+      "97\n",
+      "97\n",
+      "97\n",
+      "97\n",
+      "97\n",
+      "97\n",
+      "97\n",
+      "97\n",
+      "97\n",
+      "97\n",
+      "97\n",
+      "97\n",
+      "97\n",
+      "97\n",
+      "97\n",
+      "97\n",
+      "97\n",
+      "97\n",
+      "97\n",
+      "97\n",
+      "97\n",
+      "97\n",
+      "97\n",
+      "97\n",
+      "97\n",
+      "97\n",
+      "97\n",
+      "97\n",
+      "97\n",
+      "97\n",
+      "97\n",
+      "97\n",
+      "97\n",
+      "97\n",
+      "97\n",
+      "97\n",
+      "97\n",
+      "97\n",
+      "97\n",
+      "97\n",
+      "97\n",
+      "97\n",
+      "97\n",
+      "97\n",
+      "99\n"
+     ]
+    }
+   ],
+   "source": [
+    "## example - prime numbers between 1 and 100\n",
+    "\n",
+    "for num in range(1,101):\n",
+    "    if num>1:\n",
+    "        for i in range(2,num):\n",
+    "            if num%i==0:\n",
+    "                break\n",
+    "            else:\n",
+    "                print(num)"
+   ]
+  },
+  {
+   "cell_type": "code",
+   "execution_count": null,
+   "id": "ac0fc4c7",
+   "metadata": {},
+   "outputs": [
+    {
+     "name": "stdout",
+     "output_type": "stream",
+     "text": [
+      "<class 'list'>\n"
+     ]
+    }
+   ],
+   "source": [
+    "#### LISTS\n",
+    "\n",
+    "lst=[]\n",
+    "print(type(lst))"
+   ]
+  },
+  {
+   "cell_type": "code",
+   "execution_count": 4,
+   "id": "2099da37",
+   "metadata": {},
+   "outputs": [
+    {
+     "name": "stdout",
+     "output_type": "stream",
+     "text": [
+      "['Krish', 'Jack', 'Jacob', 1, 2, 3, 4, 5]\n"
+     ]
+    }
+   ],
+   "source": [
+    "names=[\"Krish\",\"Jack\",\"Jacob\",1,2,3,4,5]\n",
+    "print(names)\n"
+   ]
+  },
+  {
+   "cell_type": "code",
+   "execution_count": 5,
+   "id": "4542259b",
+   "metadata": {},
+   "outputs": [
+    {
+     "name": "stdout",
+     "output_type": "stream",
+     "text": [
+      "[1, 'Krish', 3.14, True]\n"
+     ]
+    }
+   ],
+   "source": [
+    "mixed_list=[1,\"Krish\",3.14,True]\n",
+    "print(mixed_list)"
+   ]
+  },
+  {
+   "cell_type": "code",
+   "execution_count": 7,
+   "id": "f1a75098",
+   "metadata": {},
+   "outputs": [],
+   "source": [
+    "### Accessing List Elements\n",
+    "\n",
+    "fruits=[\"apple\",\"banana\",\"cherry\",\"kiwi\",\"guava\"]"
+   ]
+  },
+  {
+   "cell_type": "code",
+   "execution_count": 11,
+   "id": "1b42191a",
+   "metadata": {},
+   "outputs": [
+    {
+     "name": "stdout",
+     "output_type": "stream",
+     "text": [
+      "apple\n",
+      "cherry\n",
+      "guava\n",
+      "guava\n"
+     ]
+    }
+   ],
+   "source": [
+    "print(fruits[0])\n",
+    "print(fruits[2])\n",
+    "print(fruits[4])\n",
+    "print(fruits[-1])"
+   ]
+  },
+  {
+   "cell_type": "code",
+   "execution_count": 24,
+   "id": "51d4988d",
+   "metadata": {},
+   "outputs": [
+    {
+     "name": "stdout",
+     "output_type": "stream",
+     "text": [
+      "['banana', 'cherry', 'kiwi', 'guava']\n",
+      "['banana', 'cherry']\n",
+      "['guava']\n"
+     ]
+    }
+   ],
+   "source": [
+    "print(fruits[1:])\n",
+    "print(fruits[1:3])\n",
+    "print(fruits[-1:])"
+   ]
+  },
+  {
+   "cell_type": "code",
+   "execution_count": 25,
+   "id": "5f78eaf3",
+   "metadata": {},
+   "outputs": [
+    {
+     "data": {
+      "text/plain": [
+       "['apple', 'banana', 'cherry', 'kiwi', 'guava']"
+      ]
+     },
+     "execution_count": 25,
+     "metadata": {},
+     "output_type": "execute_result"
+    }
+   ],
+   "source": [
+    "## Modifying the List Elements\n",
+    "\n",
+    "fruits"
+   ]
+  },
+  {
+   "cell_type": "code",
+   "execution_count": 27,
+   "id": "d39dc5a2",
+   "metadata": {},
+   "outputs": [
+    {
+     "name": "stdout",
+     "output_type": "stream",
+     "text": [
+      "['apple', 'Watermelon', 'cherry', 'kiwi', 'guava']\n"
+     ]
+    }
+   ],
+   "source": [
+    "fruits[1]=\"Watermelon\"\n",
+    "print(fruits)"
+   ]
+  },
+  {
+   "cell_type": "code",
+   "execution_count": 29,
+   "id": "5fb642a0",
+   "metadata": {},
+   "outputs": [],
+   "source": [
+    "fruits[1:]=\"Watermelon\""
+   ]
+  },
+  {
+   "cell_type": "code",
+   "execution_count": 30,
+   "id": "a14164af",
+   "metadata": {},
+   "outputs": [
+    {
+     "data": {
+      "text/plain": [
+       "['apple', 'W', 'a', 't', 'e', 'r', 'm', 'e', 'l', 'o', 'n']"
+      ]
+     },
+     "execution_count": 30,
+     "metadata": {},
+     "output_type": "execute_result"
+    }
+   ],
+   "source": [
+    "fruits"
+   ]
+  },
+  {
+   "cell_type": "code",
+   "execution_count": 31,
+   "id": "4cd4ce31",
+   "metadata": {},
+   "outputs": [],
+   "source": [
+    "fruits=[\"apple\",\"banana\",\"cherry\",\"kiwi\",\"guava\"]"
+   ]
+  },
+  {
+   "cell_type": "code",
+   "execution_count": 32,
+   "id": "85dfd8fd",
+   "metadata": {},
+   "outputs": [
+    {
+     "name": "stdout",
+     "output_type": "stream",
+     "text": [
+      "['apple', 'banana', 'cherry', 'kiwi', 'guava', 'orange']\n"
+     ]
+    }
+   ],
+   "source": [
+    "## List Methods\n",
+    "\n",
+    "fruits.append(\"orange\") ## Add an item to the end\n",
+    "print(fruits)"
+   ]
+  },
+  {
+   "cell_type": "code",
+   "execution_count": 34,
+   "id": "b1f41d88",
+   "metadata": {},
+   "outputs": [
+    {
+     "name": "stdout",
+     "output_type": "stream",
+     "text": [
+      "['apple', 'watermelon', 'Banana', 'banana', 'cherry', 'kiwi', 'guava', 'orange']\n"
+     ]
+    }
+   ],
+   "source": [
+    "fruits.insert(1,\"watermelon\")\n",
+    "print(fruits)"
+   ]
+  },
+  {
+   "cell_type": "code",
+   "execution_count": null,
+   "id": "fabf8a12",
+   "metadata": {},
+   "outputs": [
+    {
+     "name": "stdout",
+     "output_type": "stream",
+     "text": [
+      "['apple', 'watermelon', 'cherry', 'kiwi', 'guava', 'orange']\n"
+     ]
+    }
+   ],
+   "source": [
+    "fruits.remove(\"Banana\") ## Removing the first occurance of an item\n",
+    "print(fruits)"
+   ]
+  },
+  {
+   "cell_type": "code",
+   "execution_count": 38,
+   "id": "48ad1235",
+   "metadata": {},
+   "outputs": [
+    {
+     "name": "stdout",
+     "output_type": "stream",
+     "text": [
+      "guava\n",
+      "['apple', 'watermelon', 'cherry', 'kiwi']\n"
+     ]
+    }
+   ],
+   "source": [
+    "## Remove and return the last item\n",
+    "popped_fruits=fruits.pop()\n",
+    "print(popped_fruits)\n",
+    "print(fruits)"
+   ]
+  },
+  {
+   "cell_type": "code",
+   "execution_count": 40,
+   "id": "7031bc22",
+   "metadata": {},
+   "outputs": [
+    {
+     "name": "stdout",
+     "output_type": "stream",
+     "text": [
+      "['apple', 'watermelon', 'banana', 'banana', 'cherry', 'kiwi', 'guava']\n"
+     ]
+    }
+   ],
+   "source": [
+    "\n",
+    "fruits.insert(2,\"banana\")\n",
+    "fruits.append(\"guava\")\n",
+    "print(fruits)"
+   ]
+  },
+  {
+   "cell_type": "code",
+   "execution_count": 41,
+   "id": "d3d7c823",
+   "metadata": {},
+   "outputs": [
+    {
+     "name": "stdout",
+     "output_type": "stream",
+     "text": [
+      "['apple', 'watermelon', 'banana', 'cherry', 'kiwi', 'guava']\n"
+     ]
+    }
+   ],
+   "source": [
+    "fruits.remove(\"banana\")\n",
+    "print(fruits)"
+   ]
+  },
+  {
+   "cell_type": "code",
+   "execution_count": 42,
+   "id": "e5210e49",
+   "metadata": {},
+   "outputs": [
+    {
+     "name": "stdout",
+     "output_type": "stream",
+     "text": [
+      "3\n"
+     ]
+    }
+   ],
+   "source": [
+    "index=fruits.index(\"cherry\")\n",
+    "print(index)"
+   ]
+  },
+  {
+   "cell_type": "code",
+   "execution_count": 43,
+   "id": "42340cc8",
+   "metadata": {},
+   "outputs": [
+    {
+     "name": "stdout",
+     "output_type": "stream",
+     "text": [
+      "2\n"
+     ]
+    }
+   ],
+   "source": [
+    "fruits.insert(2,\"banana\")\n",
+    "print(fruits.count(\"banana\"))"
+   ]
+  },
+  {
+   "cell_type": "code",
+   "execution_count": 44,
+   "id": "78b40445",
+   "metadata": {},
+   "outputs": [
+    {
+     "data": {
+      "text/plain": [
+       "['apple', 'watermelon', 'banana', 'banana', 'cherry', 'kiwi', 'guava']"
+      ]
+     },
+     "execution_count": 44,
+     "metadata": {},
+     "output_type": "execute_result"
+    }
+   ],
+   "source": [
+    "fruits"
+   ]
+  },
+  {
+   "cell_type": "code",
+   "execution_count": null,
+   "id": "60a4b85c",
+   "metadata": {},
+   "outputs": [],
+   "source": [
+    "fruits.sort() ## Sorts the Lsit in Ascending order"
+   ]
+  },
+  {
+   "cell_type": "code",
+   "execution_count": 46,
+   "id": "7db3c733",
+   "metadata": {},
+   "outputs": [
+    {
+     "data": {
+      "text/plain": [
+       "['apple', 'banana', 'banana', 'cherry', 'guava', 'kiwi', 'watermelon']"
+      ]
+     },
+     "execution_count": 46,
+     "metadata": {},
+     "output_type": "execute_result"
+    }
+   ],
+   "source": [
+    "fruits"
+   ]
+  },
+  {
+   "cell_type": "code",
+   "execution_count": null,
+   "id": "d3c04f80",
+   "metadata": {},
+   "outputs": [],
+   "source": [
+    "fruits.reverse() ## Reverses the list "
+   ]
+  },
+  {
+   "cell_type": "code",
+   "execution_count": 48,
+   "id": "e5d9415b",
+   "metadata": {},
+   "outputs": [
+    {
+     "data": {
+      "text/plain": [
+       "['watermelon', 'kiwi', 'guava', 'cherry', 'banana', 'banana', 'apple']"
+      ]
+     },
+     "execution_count": 48,
+     "metadata": {},
+     "output_type": "execute_result"
+    }
+   ],
+   "source": [
+    "fruits"
+   ]
+  },
+  {
+   "cell_type": "code",
+   "execution_count": 50,
+   "id": "5c3e0273",
+   "metadata": {},
+   "outputs": [
+    {
+     "name": "stdout",
+     "output_type": "stream",
+     "text": [
+      "[]\n"
+     ]
+    }
+   ],
+   "source": [
+    "fruits.clear() ## Remove all items from the list\n",
+    "\n",
+    "print(fruits)"
+   ]
+  },
+  {
+   "cell_type": "code",
+   "execution_count": 55,
+   "id": "cf2e5031",
+   "metadata": {},
+   "outputs": [
+    {
+     "name": "stdout",
+     "output_type": "stream",
+     "text": [
+      "[3, 4, 5]\n",
+      "[1, 2, 3, 4, 5]\n",
+      "[6, 7, 8, 9, 10]\n",
+      "[1, 3, 5, 7, 9]\n",
+      "[10, 9, 8, 7, 6, 5, 4, 3, 2, 1]\n"
+     ]
+    }
+   ],
+   "source": [
+    "## Slicing Lists\n",
+    "\n",
+    "numbers = [1,2,3,4,5,6,7,8,9,10]\n",
+    "print(numbers[2:5])\n",
+    "print(numbers[:5])\n",
+    "print(numbers[5:])\n",
+    "print(numbers[::2])\n",
+    "print(numbers[::-1])"
+   ]
+  },
+  {
+   "cell_type": "code",
+   "execution_count": 59,
+   "id": "5415b489",
+   "metadata": {},
+   "outputs": [
+    {
+     "data": {
+      "text/plain": [
+       "[1, 3, 5, 7, 9]"
+      ]
+     },
+     "execution_count": 59,
+     "metadata": {},
+     "output_type": "execute_result"
+    }
+   ],
+   "source": [
+    "numbers[::2]"
+   ]
+  },
+  {
+   "cell_type": "code",
+   "execution_count": 61,
+   "id": "c486d830",
+   "metadata": {},
+   "outputs": [
+    {
+     "name": "stdout",
+     "output_type": "stream",
+     "text": [
+      "1\n",
+      "2\n",
+      "3\n",
+      "4\n",
+      "5\n",
+      "6\n",
+      "7\n",
+      "8\n",
+      "9\n",
+      "10\n"
+     ]
+    }
+   ],
+   "source": [
+    "## iterating over list\n",
+    "\n",
+    "for number in numbers:\n",
+    "    print(number)"
+   ]
+  },
+  {
+   "cell_type": "code",
+   "execution_count": 62,
+   "id": "f8a3ad49",
+   "metadata": {},
+   "outputs": [
+    {
+     "name": "stdout",
+     "output_type": "stream",
+     "text": [
+      "0 1\n",
+      "1 2\n",
+      "2 3\n",
+      "3 4\n",
+      "4 5\n",
+      "5 6\n",
+      "6 7\n",
+      "7 8\n",
+      "8 9\n",
+      "9 10\n"
+     ]
+    }
+   ],
+   "source": [
+    "## iterating with Index\n",
+    "for index,number in enumerate(numbers):\n",
+    "    print(index,number)"
+   ]
+  },
+  {
+   "cell_type": "code",
+   "execution_count": 63,
+   "id": "d0b5f7b9",
+   "metadata": {},
+   "outputs": [
+    {
+     "name": "stdout",
+     "output_type": "stream",
+     "text": [
+      "[0, 1, 4, 9, 16, 25, 36, 49, 64, 81]\n"
+     ]
+    }
+   ],
+   "source": [
+    "##List comprehension\n",
+    "lst=[]\n",
+    "for x in range(10):\n",
+    "    lst.append(x**2)\n",
+    "\n",
+    "print(lst)\n"
+   ]
+  },
+  {
+   "cell_type": "code",
+   "execution_count": 64,
+   "id": "fc456322",
+   "metadata": {},
+   "outputs": [
+    {
+     "data": {
+      "text/plain": [
+       "[0, 1, 4, 9, 16, 25, 36, 49, 64, 81]"
+      ]
+     },
+     "execution_count": 64,
+     "metadata": {},
+     "output_type": "execute_result"
+    }
+   ],
+   "source": [
+    "[x**2 for x in range(10)]"
+   ]
+  },
+  {
+   "cell_type": "code",
+   "execution_count": 70,
+   "id": "2574a534",
+   "metadata": {},
+   "outputs": [
+    {
+     "name": "stdout",
+     "output_type": "stream",
+     "text": [
+      "[0, 1, 4, 9, 16, 25, 36, 49, 64, 81]\n"
+     ]
+    }
+   ],
+   "source": [
+    "## basic List Comprehension\n",
+    "\n",
+    "square=[num**2 for num in range(10)]\n",
+    "print(square)"
+   ]
+  },
+  {
+   "cell_type": "code",
+   "execution_count": 72,
+   "id": "837febe9",
+   "metadata": {},
+   "outputs": [
+    {
+     "name": "stdout",
+     "output_type": "stream",
+     "text": [
+      "[0, 2, 4, 6, 8]\n"
+     ]
+    }
+   ],
+   "source": [
+    "### List Comprehension with Condition\n",
+    "lst=[]\n",
+    "for i in range(10):\n",
+    "    if i%2==0:\n",
+    "        lst.append(i)\n",
+    "    \n",
+    "print(lst)"
+   ]
+  },
+  {
+   "cell_type": "code",
+   "execution_count": null,
+   "id": "794cb31a",
+   "metadata": {},
+   "outputs": [],
+   "source": []
+  },
+  {
+   "cell_type": "code",
+   "execution_count": null,
+   "id": "98f7bf52",
+   "metadata": {},
+   "outputs": [],
+   "source": []
+  },
+  {
+   "cell_type": "markdown",
+   "id": "e20b4bf3",
+   "metadata": {},
+   "source": []
+  }
+ ],
+ "metadata": {
+  "kernelspec": {
+   "display_name": "venv",
+   "language": "python",
+   "name": "python3"
+  },
+  "language_info": {
+   "codemirror_mode": {
+    "name": "ipython",
+    "version": 3
+   },
+   "file_extension": ".py",
+   "mimetype": "text/x-python",
+   "name": "python",
+   "nbconvert_exporter": "python",
+   "pygments_lexer": "ipython3",
+   "version": "3.13.5"
+  }
+ },
+ "nbformat": 4,
+ "nbformat_minor": 5
+}
