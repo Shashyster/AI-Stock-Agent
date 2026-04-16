@@ -13,6 +13,8 @@ from datetime import datetime, timedelta
 import urllib3
 import re
 import os
+import math
+import time
 
 # Disable SSL warnings
 urllib3.disable_warnings(urllib3.exceptions.InsecureRequestWarning)
@@ -53,16 +55,26 @@ class TechnicalAnalysis:
     
     @staticmethod
     def calculate_moving_averages(prices):
-        """Calculate various moving averages"""
-        if len(prices) < 200:
+        """Calculate various moving averages (partial results when history < 200 days)."""
+        if len(prices) < 12:
             return {}
-        return {
-            'sma_20': float(prices.rolling(window=20).mean().iloc[-1]) if len(prices) >= 20 else None,
-            'sma_50': float(prices.rolling(window=50).mean().iloc[-1]) if len(prices) >= 50 else None,
-            'sma_200': float(prices.rolling(window=200).mean().iloc[-1]) if len(prices) >= 200 else None,
-            'ema_12': float(prices.ewm(span=12, adjust=False).mean().iloc[-1]) if len(prices) >= 12 else None,
-            'ema_26': float(prices.ewm(span=26, adjust=False).mean().iloc[-1]) if len(prices) >= 26 else None,
-        }
+        out = {}
+        if len(prices) >= 20:
+            v = prices.rolling(window=20).mean().iloc[-1]
+            out['sma_20'] = float(v) if not pd.isna(v) else None
+        if len(prices) >= 50:
+            v = prices.rolling(window=50).mean().iloc[-1]
+            out['sma_50'] = float(v) if not pd.isna(v) else None
+        if len(prices) >= 200:
+            v = prices.rolling(window=200).mean().iloc[-1]
+            out['sma_200'] = float(v) if not pd.isna(v) else None
+        if len(prices) >= 12:
+            v = prices.ewm(span=12, adjust=False).mean().iloc[-1]
+            out['ema_12'] = float(v) if not pd.isna(v) else None
+        if len(prices) >= 26:
+            v = prices.ewm(span=26, adjust=False).mean().iloc[-1]
+            out['ema_26'] = float(v) if not pd.isna(v) else None
+        return out
     
     @staticmethod
     def calculate_bollinger_bands(prices, period=20, std_dev=2):
@@ -458,10 +470,290 @@ class SocialSentimentAnalysis:
 
 class StockInfoAPI:
     """API class to fetch stock information"""
+
+    @staticmethod
+    def _best_yahoo_info_dict(ticker_upper):
+        """Yahoo sometimes returns a very sparse `info` dict; take the richest of a few attempts."""
+        best = {}
+        best_n = 0
+        for attempt in range(3):
+            ti = yf.Ticker(ticker_upper)
+            try:
+                raw = ti.info
+            except Exception:
+                time.sleep(0.35 + 0.12 * attempt)
+                continue
+            n = len(raw) if isinstance(raw, dict) else 0
+            if n > best_n:
+                best_n = n
+                best = dict(raw) if isinstance(raw, dict) else {}
+            if n >= 120:
+                break
+            time.sleep(0.35 + 0.12 * attempt)
+        return best
+
+    @staticmethod
+    def _enrich_info_from_search(ticker_upper, info):
+        """Fill sector/industry/name when quote summary modules are empty (Search uses a different endpoint)."""
+        if not isinstance(info, dict):
+            info = {}
+        else:
+            info = dict(info)
+        if (
+            str(info.get("sector") or "").strip()
+            and str(info.get("industry") or "").strip()
+            and str(info.get("longName") or info.get("shortName") or "").strip()
+        ):
+            return info
+        try:
+            sr = yf.Search(ticker_upper)
+            quotes = getattr(sr, "quotes", None) or []
+            hit = next(
+                (q for q in quotes if str(q.get("symbol", "")).upper() == ticker_upper),
+                quotes[0] if quotes else None,
+            )
+            if not hit:
+                return info
+            if not str(info.get("sector") or "").strip():
+                info["sector"] = hit.get("sector") or hit.get("sectorDisp")
+            if not str(info.get("industry") or "").strip():
+                info["industry"] = hit.get("industry") or hit.get("industryDisp")
+            if not str(info.get("longName") or "").strip():
+                info["longName"] = hit.get("longname") or hit.get("longName")
+            if not str(info.get("shortName") or "").strip():
+                info["shortName"] = hit.get("shortname") or hit.get("shortName")
+        except Exception:
+            pass
+        return info
+
+    @staticmethod
+    def _stmt_first_value(df, *row_names):
+        if df is None or getattr(df, "empty", True):
+            return None
+        for name in row_names:
+            if name in df.index:
+                try:
+                    v = df.loc[name].iloc[0]
+                    if StockInfoAPI._scalar_ok(v):
+                        return float(v)
+                except Exception:
+                    continue
+        return None
+
+    @staticmethod
+    def _enrich_info_from_financials(ticker_obj, info):
+        """Back-fill key fundamentals from statements when Yahoo summary fields are null."""
+        if not isinstance(info, dict):
+            info = {}
+        else:
+            info = dict(info)
+        need = not (
+            StockInfoAPI._scalar_ok(info.get("totalRevenue"))
+            and StockInfoAPI._scalar_ok(info.get("trailingEps"))
+            and StockInfoAPI._scalar_ok(info.get("trailingPE"))
+            and StockInfoAPI._scalar_ok(info.get("profitMargins"))
+        )
+        if not need:
+            return info
+        try:
+            inc = ticker_obj.income_stmt
+            bal = ticker_obj.balance_sheet
+        except Exception:
+            return info
+        if inc is None or inc.empty:
+            return info
+
+        rev = StockInfoAPI._stmt_first_value(
+            inc,
+            "Total Revenue",
+            "Operating Revenue",
+            "Net Sales",
+        )
+        ni = StockInfoAPI._stmt_first_value(
+            inc,
+            "Net Income Common Stockholders",
+            "Net Income From Continuing Operation Net Minority Interest",
+            "Net Income",
+        )
+        op_inc = StockInfoAPI._stmt_first_value(inc, "Operating Income", "Total Operating Income As Reported")
+        gp = StockInfoAPI._stmt_first_value(inc, "Gross Profit")
+        diluted_eps = StockInfoAPI._stmt_first_value(inc, "Diluted EPS", "Basic EPS")
+
+        if rev and not StockInfoAPI._scalar_ok(info.get("totalRevenue")):
+            info["totalRevenue"] = rev
+        if diluted_eps and not StockInfoAPI._scalar_ok(info.get("trailingEps")):
+            info["trailingEps"] = diluted_eps
+        if ni and rev and rev != 0 and not StockInfoAPI._scalar_ok(info.get("profitMargins")):
+            info["profitMargins"] = ni / rev
+        if op_inc and rev and rev != 0 and not StockInfoAPI._scalar_ok(info.get("operatingMargins")):
+            info["operatingMargins"] = op_inc / rev
+        if gp and rev and rev != 0 and not StockInfoAPI._scalar_ok(info.get("grossMargins")):
+            info["grossMargins"] = gp / rev
+
+        ta = StockInfoAPI._stmt_first_value(bal, "Total Assets") if bal is not None and not bal.empty else None
+        te = None
+        if bal is not None and not bal.empty:
+            te = StockInfoAPI._stmt_first_value(
+                bal,
+                "Stockholders Equity",
+                "Common Stock Equity",
+                "Total Equity Gross Minority Interest",
+            )
+
+        if ni and ta and ta != 0 and not StockInfoAPI._scalar_ok(info.get("returnOnAssets")):
+            info["returnOnAssets"] = ni / ta
+        if ni and te and te != 0 and not StockInfoAPI._scalar_ok(info.get("returnOnEquity")):
+            info["returnOnEquity"] = ni / te
+
+        mcap = info.get("marketCap")
+        if not StockInfoAPI._scalar_ok(mcap):
+            try:
+                mcap = getattr(ticker_obj.fast_info, "market_cap", None)
+            except Exception:
+                mcap = None
+        if StockInfoAPI._scalar_ok(mcap) and rev and rev != 0 and not StockInfoAPI._scalar_ok(
+            info.get("priceToSalesTrailing12Months")
+        ):
+            info["priceToSalesTrailing12Months"] = mcap / rev
+        if StockInfoAPI._scalar_ok(mcap) and te and te != 0 and not StockInfoAPI._scalar_ok(info.get("priceToBook")):
+            info["priceToBook"] = mcap / te
+
+        shares = info.get("sharesOutstanding")
+        if not StockInfoAPI._scalar_ok(shares):
+            try:
+                sh = getattr(ticker_obj.fast_info, "shares", None)
+                if StockInfoAPI._scalar_ok(sh):
+                    shares = sh
+                    info["sharesOutstanding"] = sh
+            except Exception:
+                shares = None
+        if rev and StockInfoAPI._scalar_ok(shares) and shares and not StockInfoAPI._scalar_ok(
+            info.get("revenuePerShare")
+        ):
+            info["revenuePerShare"] = rev / shares
+
+        price = info.get("currentPrice") or info.get("regularMarketPrice")
+        if not StockInfoAPI._scalar_ok(price):
+            try:
+                price = getattr(ticker_obj.fast_info, "last_price", None)
+            except Exception:
+                price = None
+        if (
+            StockInfoAPI._scalar_ok(price)
+            and StockInfoAPI._scalar_ok(diluted_eps)
+            and diluted_eps != 0
+            and not StockInfoAPI._scalar_ok(info.get("trailingPE"))
+        ):
+            info["trailingPE"] = price / diluted_eps
+
+        return info
+
+    @staticmethod
+    def _scalar_ok(val):
+        """True if val is a usable numeric scalar (not None / NaN / inf)."""
+        if val is None:
+            return False
+        if isinstance(val, float) and (math.isnan(val) or math.isinf(val)):
+            return False
+        try:
+            if pd.isna(val):
+                return False
+        except (TypeError, ValueError):
+            pass
+        return True
+    
+    @staticmethod
+    def _enrich_info_from_fast_info(ticker_obj, info):
+        """Fill missing Yahoo `info` fields from yfinance FastInfo (common when keys exist but are null)."""
+        if not isinstance(info, dict):
+            info = {}
+        else:
+            info = dict(info)
+        try:
+            fi = ticker_obj.fast_info
+        except Exception:
+            return info
+        
+        def fi_get(attr):
+            try:
+                return getattr(fi, attr, None)
+            except Exception:
+                return None
+        
+        pairs = [
+            ('currentPrice', ('last_price',)),
+            ('regularMarketPrice', ('last_price',)),
+            ('previousClose', ('previous_close', 'regular_market_previous_close')),
+            ('open', ('open',)),
+            ('dayHigh', ('day_high',)),
+            ('dayLow', ('day_low',)),
+            ('marketCap', ('market_cap',)),
+            ('sharesOutstanding', ('shares',)),
+            ('fiftyTwoWeekHigh', ('year_high',)),
+            ('fiftyTwoWeekLow', ('year_low',)),
+            ('fiftyDayAverage', ('fifty_day_average',)),
+            ('twoHundredDayAverage', ('two_hundred_day_average',)),
+            ('currency', ('currency',)),
+            ('exchange', ('exchange',)),
+            ('averageVolume', ('three_month_average_volume', 'ten_day_average_volume')),
+        ]
+        for info_key, fi_attrs in pairs:
+            if StockInfoAPI._scalar_ok(info.get(info_key)):
+                continue
+            for fa in fi_attrs:
+                v = fi_get(fa)
+                if StockInfoAPI._scalar_ok(v):
+                    info[info_key] = v
+                    break
+        if not StockInfoAPI._scalar_ok(info.get('volume')):
+            v = fi_get('last_volume')
+            if StockInfoAPI._scalar_ok(v):
+                info['volume'] = v
+        return info
+    
+    @staticmethod
+    def _fill_market_fields_from_history(info, hist):
+        """Back-fill price/volume/52w from OHLCV when Yahoo leaves info fields null."""
+        if hist is None or hist.empty:
+            return info
+        if not isinstance(info, dict):
+            info = {}
+        else:
+            info = dict(info)
+        last = hist.iloc[-1]
+        prev = hist.iloc[-2] if len(hist) > 1 else last
+        
+        def set_if_bad(key, val):
+            if StockInfoAPI._scalar_ok(info.get(key)):
+                return
+            try:
+                if val is not None and not (isinstance(val, float) and (math.isnan(val) or math.isinf(val))):
+                    info[key] = float(val)
+            except (TypeError, ValueError):
+                pass
+        
+        set_if_bad('currentPrice', last.get('Close'))
+        set_if_bad('regularMarketPrice', last.get('Close'))
+        set_if_bad('previousClose', prev.get('Close'))
+        set_if_bad('open', last.get('Open'))
+        set_if_bad('dayHigh', last.get('High'))
+        set_if_bad('dayLow', last.get('Low'))
+        set_if_bad('volume', last.get('Volume'))
+        if len(hist) >= 5:
+            try:
+                set_if_bad('fiftyTwoWeekHigh', float(hist['High'].max()))
+                set_if_bad('fiftyTwoWeekLow', float(hist['Low'].min()))
+            except Exception:
+                pass
+        return info
     
     @staticmethod
     def format_large_number(num):
         """Format large numbers in readable format"""
+        if num is None or num == 'N/A':
+            return 'N/A'
+        if isinstance(num, float) and (math.isnan(num) or math.isinf(num)):
+            return 'N/A'
         if not isinstance(num, (int, float)):
             return str(num)
         
@@ -476,7 +768,11 @@ class StockInfoAPI:
     
     @staticmethod
     def format_percentage(num):
-        """Format percentage values"""
+        """Format percentage values (Yahoo often sends decimals e.g. 0.15 for 15%)."""
+        if num is None or num == 'N/A':
+            return 'N/A'
+        if isinstance(num, float) and (math.isnan(num) or math.isinf(num)):
+            return 'N/A'
         if not isinstance(num, (int, float)):
             return str(num)
         return f"{num*100:.2f}%"
@@ -484,12 +780,14 @@ class StockInfoAPI:
     @staticmethod
     def format_date(timestamp):
         """Format Unix timestamp to readable date"""
+        if timestamp is None or timestamp == 'N/A':
+            return 'N/A'
         if not isinstance(timestamp, (int, float)):
             return str(timestamp)
         try:
             return datetime.fromtimestamp(timestamp).strftime('%Y-%m-%d')
-        except:
-            return str(timestamp)
+        except Exception:
+            return 'N/A'
     
     @staticmethod
     def generate_ai_analysis(stock_data, hist_data, info, ticker_obj=None):
@@ -1366,8 +1664,9 @@ class StockInfoAPI:
     def get_stock_info(ticker):
         """Fetch comprehensive stock information"""
         try:
-            ticker_obj = yf.Ticker(ticker.upper())
-            
+            ticker_upper = ticker.upper()
+            ticker_obj = yf.Ticker(ticker_upper)
+
             # Test connectivity
             try:
                 test_data = ticker_obj.history(period="1d")
@@ -1375,31 +1674,57 @@ class StockInfoAPI:
                     return {"error": f"No data found for ticker '{ticker}'. It may be invalid or delisted."}
             except Exception as e:
                 return {"error": f"Connection failed: {str(e)}"}
-            
-            # Get company info
+
+            # Get company info — retry to reduce sparse quote-summary responses; fall back to OHLCV stub
+            info = {}
             try:
-                info = ticker_obj.info
-            except Exception as e:
-                # Try to get basic data from history
-                hist = ticker_obj.history(period="5d")
-                if not hist.empty:
-                    latest = hist.iloc[-1]
-                    info = {
-                        'symbol': ticker.upper(),
-                        'longName': ticker.upper(),
-                        'regularMarketPrice': float(latest['Close']),
-                        'previousClose': float(hist.iloc[-2]['Close']) if len(hist) > 1 else float(latest['Close']),
-                    }
-                else:
+                info = StockInfoAPI._best_yahoo_info_dict(ticker_upper)
+            except Exception:
+                info = {}
+            if not info:
+                try:
+                    ti = yf.Ticker(ticker_upper)
+                    info = ti.info
+                    if not isinstance(info, dict):
+                        info = {}
+                except Exception:
+                    info = {}
+
+            if not info or len(info) == 0:
+                try:
+                    hist_fb = ticker_obj.history(period="5d")
+                    if not hist_fb.empty:
+                        latest = hist_fb.iloc[-1]
+                        info = {
+                            "symbol": ticker_upper,
+                            "longName": ticker_upper,
+                            "regularMarketPrice": float(latest["Close"]),
+                            "previousClose": float(hist_fb.iloc[-2]["Close"])
+                            if len(hist_fb) > 1
+                            else float(latest["Close"]),
+                        }
+                    else:
+                        return {"error": f"Unable to fetch data for ticker '{ticker}'"}
+                except Exception:
                     return {"error": f"Unable to fetch data for ticker '{ticker}'"}
-            
+
             if not info or len(info) == 0:
                 return {"error": f"No data returned for ticker '{ticker}'"}
-            
+
+            info = StockInfoAPI._enrich_info_from_search(ticker_upper, info)
+            ticker_obj = yf.Ticker(ticker_upper)
+
             # Get historical data from start (max period)
-            hist_max = ticker_obj.history(period="max")
-            hist_1y = ticker_obj.history(period="1y")
-            hist_5y = ticker_obj.history(period="5y")
+            hist_max = ticker_obj.history(period="max", auto_adjust=True)
+            hist_1y = ticker_obj.history(period="1y", auto_adjust=True)
+            hist_5y = ticker_obj.history(period="5y", auto_adjust=True)
+
+            # Yahoo often returns nulls for fields that FastInfo / OHLCV / statements still provide
+            info = StockInfoAPI._enrich_info_from_fast_info(ticker_obj, info)
+            info = StockInfoAPI._enrich_info_from_financials(ticker_obj, info)
+            info = StockInfoAPI._fill_market_fields_from_history(info, hist_1y)
+            if not str(info.get('longName') or '').strip():
+                info['longName'] = info.get('shortName') or info.get('symbol') or ticker.upper()
             
             # Calculate yearly performance
             yearly_performance = []
@@ -1562,12 +1887,19 @@ class StockInfoAPI:
                     formatted_info["fiveYearLow"] = float(hist_5y['Close'].min())
                     formatted_info["fiveYearReturn"] = f"{((hist_5y['Close'].iloc[-1] - hist_5y['Close'].iloc[0]) / hist_5y['Close'].iloc[0] * 100):.2f}%"
             
-            # Calculate Technical Indicators
-            if not hist_1y.empty and len(hist_1y) >= 200:
-                close_prices = hist_1y['Close']
-                high_prices = hist_1y['High']
-                low_prices = hist_1y['Low']
-                volume_data = hist_1y['Volume']
+            # Technical indicators: use longest practical window (not only 1y / 200d gate)
+            hist_ta = hist_max if not hist_max.empty and len(hist_max) >= len(hist_1y) else hist_1y
+            if hist_ta.empty:
+                hist_ta = hist_1y
+            if len(hist_ta) > 600:
+                hist_ta = hist_ta.tail(600).copy()
+            
+            # Calculate Technical Indicators (RSI needs ~15 bars; MACD ~26; SMA200 needs 200 when available)
+            if not hist_ta.empty and len(hist_ta) >= 30:
+                close_prices = hist_ta['Close']
+                high_prices = hist_ta['High']
+                low_prices = hist_ta['Low']
+                volume_data = hist_ta['Volume']
                 
                 # RSI
                 rsi = TechnicalAnalysis.calculate_rsi(close_prices)
@@ -1625,15 +1957,16 @@ class StockInfoAPI:
                 
                 # Additional Finviz-style metrics
                 # Price change percentages
-                if len(hist_1y) >= 5:
-                    formatted_info["change5d"] = f"{((close_prices.iloc[-1] - close_prices.iloc[-5]) / close_prices.iloc[-5] * 100):.2f}%" if len(hist_1y) >= 5 else 'N/A'
-                if len(hist_1y) >= 20:
-                    formatted_info["change20d"] = f"{((close_prices.iloc[-1] - close_prices.iloc[-20]) / close_prices.iloc[-20] * 100):.2f}%" if len(hist_1y) >= 20 else 'N/A'
-                if len(hist_1y) >= 60:
-                    formatted_info["change60d"] = f"{((close_prices.iloc[-1] - close_prices.iloc[-60]) / close_prices.iloc[-60] * 100):.2f}%" if len(hist_1y) >= 60 else 'N/A'
+                ta_len = len(close_prices)
+                if ta_len >= 5:
+                    formatted_info["change5d"] = f"{((close_prices.iloc[-1] - close_prices.iloc[-5]) / close_prices.iloc[-5] * 100):.2f}%"
+                if ta_len >= 20:
+                    formatted_info["change20d"] = f"{((close_prices.iloc[-1] - close_prices.iloc[-20]) / close_prices.iloc[-20] * 100):.2f}%"
+                if ta_len >= 60:
+                    formatted_info["change60d"] = f"{((close_prices.iloc[-1] - close_prices.iloc[-60]) / close_prices.iloc[-60] * 100):.2f}%"
                 
                 # Volatility (30-day)
-                if len(hist_1y) >= 30:
+                if ta_len >= 30:
                     returns_30d = close_prices.pct_change().dropna()
                     volatility_30d = returns_30d.tail(30).std() * np.sqrt(252) * 100  # Annualized
                     formatted_info["volatility30d"] = f"{volatility_30d:.2f}%"
@@ -1645,9 +1978,33 @@ class StockInfoAPI:
                     volume_ratio = (current_volume / avg_volume_20d) * 100
                     formatted_info["volumeRatio"] = round(volume_ratio, 2)
             
+            # Normalize nulls from Yahoo (keys present, values null) so UI shows N/A not blanks
+            _skip_na_sanitize = frozenset({
+                'yearlyPerformance', 'companyOfficers', 'hasHistoricalData',
+                'historicalDataPoints', 'totalTradingDays',
+            })
+            for _k, _v in list(formatted_info.items()):
+                if _k in _skip_na_sanitize or isinstance(_v, (dict, list)):
+                    continue
+                if _v is None:
+                    formatted_info[_k] = 'N/A'
+                elif isinstance(_v, float) and (math.isnan(_v) or math.isinf(_v)):
+                    formatted_info[_k] = 'N/A'
+                else:
+                    try:
+                        if pd.isna(_v):
+                            formatted_info[_k] = 'N/A'
+                    except (TypeError, ValueError):
+                        pass
+            
             # AI-Powered Analysis and Predictions
-            ticker_obj_for_analysis = yf.Ticker(ticker.upper())
-            analysis = StockInfoAPI.generate_ai_analysis(formatted_info, hist_1y if not hist_1y.empty else None, info, ticker_obj_for_analysis)
+            ticker_obj_for_analysis = yf.Ticker(ticker_upper)
+            analysis = StockInfoAPI.generate_ai_analysis(
+                formatted_info,
+                hist_1y if not hist_1y.empty else None,
+                info,
+                ticker_obj_for_analysis,
+            )
             formatted_info["aiAnalysis"] = analysis
             
             return formatted_info
