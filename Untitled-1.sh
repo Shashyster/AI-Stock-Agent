@@ -1,0 +1,6 @@
+#!/bin/bash
+# Simple wrapper to run stock information script with just a ticker symbol
+# Usage: ./stock AAPL
+# Or: stock AAPL (if in PATH)
+
+python3 "$(dirname "$0")/Stock Trader Information.py" "$@"
